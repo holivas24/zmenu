@@ -1,0 +1,35 @@
+.hidden{
+    display: none;
+}
+.cursor-pointer{
+    cursor: pointer;
+}
+.popover-close{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 10px;
+    padding: 5px;
+}
+.popover-close:hover{
+    background: rgba(0, 0, 0, .5);
+}
+.pace .pace-progress {
+    background: #058B84 !important;
+}
+.main-logo{
+    width: 20px;
+}
+.app-bar .d-menu{
+    background-color: #04AEA5;
+    border-color: #058B84;
+}
+.app-bar .app-bar-menu > li .d-menu{
+    border-color: #04AEA5 !important;
+}
+.app-bar .d-menu li a{
+    color: white !important;
+}
+.app-bar .d-menu li:hover{
+    background-color: #058B84 !important;
+}
