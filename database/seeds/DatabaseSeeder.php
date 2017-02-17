@@ -11,7 +11,7 @@ class DatabaseSeeder extends Seeder {
      */
     public function run() {
         // $this->call(UsersTableSeeder::class);
-        DB::table('usuarios')->insert(['nombre' => 'admin', 'password' => bcrypt('admin123'), 'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s')]);
+        DB::table('usuarios')->insert(['nombre' => 'Administrador', 'usuario' => 'admin', 'password' => bcrypt('admin123'), 'tipo' => 'administrador', 'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s')]);
     }
 
 }

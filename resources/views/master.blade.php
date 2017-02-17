@@ -45,16 +45,16 @@
             <a href="/home" class="app-bar-element branding">zMenu</a>
             <span class="app-bar-divider"></span>
             <ul class="app-bar-menu">
-                <li><a href="#"><span class="mif-home"></span> Evaluaciones</a></li>
+                <li><a href="#"><span class="mif-shop"></span> Inventario</a></li>
             </ul>
             <ul class="app-bar-menu place-right" data-flexdirection="reverse">
-                <li><a href="/user" class="fg-white"><span class="mif-user"></span> {{ ucfirst(Auth::user()->nombre) }}</a></li>
+                <li><a href="#" class="fg-white"><span class="mif-user"></span> {{ ucfirst(Auth::user()->nombre) }}</a></li>
                 <li><a href="/logout" class="fg-white"><span class="mif-exit"></span></a></li>
             </ul>
             <div class="app-bar-pullbutton automatic" style="display: none;"></div><div class="clearfix" style="width: 0;"></div><nav class="app-bar-pullmenu hidden flexstyle-app-bar-menu" style="display: none;"><ul class="app-bar-pullmenubar hidden app-bar-menu"></ul></nav>
         </div>
-        <div class="container page-content">
-            <div class="grid responsive-future" style="height: 95%;">
+        <div class="page-content">
+            <div class="grid responsive-future" style="height: 96%;">
                 <div class="row" id="contenido">
                     @yield('content')
                 </div>

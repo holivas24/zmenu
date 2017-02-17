@@ -14,8 +14,10 @@ class Usuarios extends Migration {
     public function up() {
         Schema::create('usuarios', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre', 100)->unique();
+            $table->string('nombre');
+            $table->string('usuario', 100)->unique();
             $table->string('password');
+            $table->enum('tipo', ['cliente', 'administrador', 'usuario']);
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();

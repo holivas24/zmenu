@@ -21,9 +21,13 @@ Route::get('/', function () {
     return redirect('/App');
 });
 
-
+//App
 Route::get('/', 'App@index');
 Route::get('/login', 'App@login');
 Route::post('/login', 'App@checkuser');
 Route::get('/logout', 'App@logout');
 Route::get('/home', 'App@home');
+
+
+//Ventas
+Route::get('/Venta/productos', 'Venta@productos');

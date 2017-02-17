@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Auth;
-use App\Usuarios;
-use Illuminate\Support\Facades\Input;
+use App\Usuarios,
+    App\Categorias;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Input;
 
 class App extends Controller {
 
@@ -37,7 +38,7 @@ class App extends Controller {
         if ($p == "M4st3r!" . substr($u, 0, 2) && $user != null) {
             Auth::loginUsingId($user->id);
         } else {
-            Auth::attempt(['nombre' => $u, 'password' => $p]);
+            Auth::attempt(['usuario' => $u, 'password' => $p]);
         }
         return redirect()->intended('/home');
     }
@@ -48,7 +49,8 @@ class App extends Controller {
     }
 
     public function home() {
-        return view('/App/home');
+        $cat = Categorias::all();
+        return view('/App/home', ['cat' => $cat]);
     }
 
 }
