@@ -34,3 +34,4 @@ Route::get('/Venta/productos', 'Venta@productos');
 Route::get('/Venta/add', 'Venta@add');
 Route::get('/Venta/detalle', 'Venta@detalle');
 Route::get('/Venta/clear', 'Venta@clear');
+Route::get('/Venta/inventario', 'Venta@inventario');

@@ -9,7 +9,9 @@
             @endforeach
         </ul>
     </div>
-    <div class="productos"></div>
+    @foreach ($cat as $c)
+    <div class="productos" id="prods_{{$c->id}}"></div>
+    @endforeach
     <div class="detalle">
         <div class="prods">
             <table class="table" style="margin-top: 0">
@@ -23,7 +25,7 @@
                 <tbody>
                     <tr>
                         <td colspan="3" style="padding: 0;">
-                            <div class="lista"></div>
+                            <table class="lista"></table>
                         </td>
                     </tr>
                 </tbody>
@@ -43,18 +45,26 @@
 </div>
 <script>
     $(function () {
+        $(".grid").css("height", "100%");
+        $(".grid").css("margin", "0");
         $(".categorias li").click(function () {
             $(".categorias li").removeClass("selected");
             $(this).addClass("selected");
-            $.get("/Venta/productos?id=" + $(this).attr('value'), function (data) {
-                $(".venta .productos").html(data);
-                $(".productos .producto").click(function () {
-                    $.get("/Venta/add?id=" + $(this).attr("value"), function (detail) {
-                        $(".detalle .lista").html(detail);
-                        CalcularTotal();
+            var id = $(this).attr('value');
+            if (!$("#prods_" + id).hasClass("loaded")) {
+                $.get("/Venta/productos?id=" + id, function (data) {
+                    $("#prods_" + id).html(data);
+                    $(".productos .producto").click(function () {
+                        $.get("/Venta/add?id=" + $(this).attr("value"), function (detail) {
+                            $(".detalle .lista").html(detail);
+                            CalcularTotal();
+                        });
                     });
                 });
-            });
+                $("#prods_" + id).addClass("loaded");
+            }
+            $(".productos").hide();
+            $("#prods_" + id).show();
         });
         $.get("/Venta/detalle", function (detail) {
             $(".detalle .lista").html(detail);
@@ -155,7 +165,7 @@
         height: 60%;
     }
     .venta .detalle .prods .lista{
-        position: absolute;
+        position: relative;
         width: 100%;
         height: 52%;
         overflow: auto;

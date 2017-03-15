@@ -10,14 +10,14 @@ use Illuminate\Support\Facades\Input;
 class Venta extends Controller {
 
     public function productos() {
-        $prod = Productos::categoria(Input::get('id'))->get();
+        $prod = Productos::porCategoria(Input::get('id'))->get();
         return view('Venta/productos', ['prod' => $prod]);
     }
 
     public function detalle() {
         $prods = Session::get('productos') ? Session::get('productos') : [];
         foreach ($prods as $p) {
-            echo "<tr><td style='width: 50%'>" . $p['nombre'] . "</td><td style='width: 15%;'>" . $p['cantidad'] . "</td><td style='width: 30%;'>$ " . number_format(($p['precio'] * $p['cantidad']), 2, '.', ','). "</td></tr>";
+            echo "<tr><td style='width: 50%'>" . $p['nombre'] . "</td><td style='width: 25%;text-align:center;'>" . $p['cantidad'] . "</td><td style='width: 25%;'>$ " . number_format(($p['precio'] * $p['cantidad']), 2, '.', ',') . "</td></tr>";
         }
     }
 
@@ -45,6 +45,11 @@ class Venta extends Controller {
 
     public function clear() {
         Session::put('productos', []);
+    }
+
+    public function inventario() {
+        $prod = Productos::all();
+        return view('Venta/inventario', ['prod' => $prod]);
     }
 
 }
