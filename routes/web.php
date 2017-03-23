@@ -18,20 +18,40 @@ setlocale(LC_MONETARY, 'es_MX');
 Carbon::setLocale('es');
 
 Route::get('/', function () {
-    return redirect('/App');
+    return redirect('/inicio');
 });
 
 //App
-Route::get('/', 'App@index');
-Route::get('/login', 'App@login');
-Route::post('/login', 'App@checkuser');
-Route::get('/logout', 'App@logout');
-Route::get('/home', 'App@home');
+Route::get('/', 'Application@index');
+Route::get('/login', 'Application@login');
+Route::post('/login', 'Application@checkuser');
+Route::get('/logout', 'Application@logout');
+Route::get('/inicio', 'Application@home');
 
 
 //Ventas
-Route::get('/Venta/productos', 'Venta@productos');
-Route::get('/Venta/add', 'Venta@add');
-Route::get('/Venta/detalle', 'Venta@detalle');
-Route::get('/Venta/clear', 'Venta@clear');
-Route::get('/Venta/inventario', 'Venta@inventario');
+Route::group(['prefix' => 'Venta'], function () {
+    Route::get('productos', 'Venta@productos');
+    Route::get('add', 'Venta@add');
+    Route::get('detalle', 'Venta@detalle');
+    Route::get('clear', 'Venta@clear');
+    Route::get('inventario', 'Venta@inventario');
+});
+
+//Admin
+Route::group(['prefix' => 'Admin'], function () {
+    Route::get('', 'Admin@panel');
+    Route::get('panel', 'Admin@panel');
+    //Categorías
+    Route::get('usuarios', 'Admin@usuarios');
+    Route::get('ventas', 'Admin@ventas');
+    Route::get('categorias', 'Admin@categorias');
+    Route::get('productos', 'Admin@productos');
+    Route::get('registros', 'Admin@registros');
+    //Detallado
+    Route::get('usuario/{id}', 'Admin@usuario');
+    Route::get('venta/{id}', 'Admin@venta');
+    Route::get('categoria/{id}', 'Admin@categoria');
+    Route::get('producto/{id}', 'Admin@producto');
+    Route::get('registro', 'Admin@registro');
+});

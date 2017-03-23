@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Session;
+use Session,
+    View;
 use App\Productos;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Input;
 
 class Venta extends Controller {
+
+    public function __construct() {
+        View::share('public', app()->env != 'local' ? 'public/' : '');
+    }
 
     public function productos() {
         $prod = Productos::porCategoria(Input::get('id'))->get();

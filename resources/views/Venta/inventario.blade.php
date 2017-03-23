@@ -3,15 +3,17 @@
 @section('content')
 <script>
     Titulo("Inventario", "");
+    $(function () {
+        TablaDinamica("#inventario");
+    });
 </script>
-<table class="table striped">
+<table class="table striped" id="inventario">
     <thead>
         <tr>
             <th>Nombre</th>
             <th>Categoría</th>
             <th>Precio</th>
-            <th>Cantidad</th>
-            <th></th>
+            <th style='width: 200px;'>Cantidad</th>
         </tr>
     </thead>
     <tbody>
@@ -25,7 +27,6 @@
                     <input type="number" value="{{$p->cantidad}}" min="0">
                 </div>
             </td>
-            <td></td>
         </tr>
         @endforeach
     </tbody>

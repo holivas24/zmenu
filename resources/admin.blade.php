@@ -7,22 +7,22 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <link rel="icon" type="image/png" href="{{ asset('img/favicon.png') }}">
-        <link href="{{ asset($public.'css/main.css') }}" rel="stylesheet">
-        <link href="{{ asset($public.'css/metro.css') }}" rel="stylesheet">
-        <link href="{{ asset($public.'css/metro-icons.css') }}" rel="stylesheet">
-        <link href="{{ asset($public.'css/metro-responsive.css') }}" rel="stylesheet">
-        <link href="{{ asset($public.'css/pace.css') }}" rel="stylesheet">
-        <link href="{{ asset($public.'css/select2.css') }}" rel="stylesheet">
-        <script src="{{ asset($public.'js/jquery.min.js') }}"></script>
-        <script src="{{ asset($public.'js/metro.js') }}"></script>
-        <script src="{{ asset($public.'js/functions.js') }}"></script>
-        <script src="{{ asset($public.'js/jscolor.min.js') }}"></script>
-        <script src="{{ asset($public.'js/jquery/jquery.dataTables.js') }}"></script>
-        <script src="{{ asset($public.'js/select2/select2.js') }}"></script>
-        <script src="{{ asset($public.'js/pace.min.js') }}"></script>
-        <script src="{{ asset($public.'js/jquery/highcharts.js') }}"></script>
-        <script src="{{ asset($public.'js/jquery/highcharts-theme.js') }}"></script>
-        <script src="{{ asset($public.'js/jquery/highcharts-lang.js') }}"></script>
+        <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/metro.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/metro-icons.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/metro-responsive.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/monthly.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/select2.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/pace.css') }}" rel="stylesheet">
+        <script src="{{ asset('js/jquery.min.js') }}"></script>
+        <script src="{{ asset('js/metro.js') }}"></script>
+        <script src="{{ asset('js/functions.js') }}"></script>
+        <script src="{{ asset('js/jquery/monthly.js') }}"></script>
+        <script src="{{ asset('js/jquery/jquery.dataTables.js') }}"></script>
+        <script src="{{ asset('js/jquery/highcharts.js') }}"></script>
+        <script src="{{ asset('js/select2/select2.js') }}"></script>
+        <script src="{{ asset('js/charts.js') }}"></script>
+        <script src="{{ asset('js/pace.min.js') }}"></script>
         <style>
             html, body {
                 height: 100%;

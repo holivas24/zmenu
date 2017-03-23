@@ -40,7 +40,14 @@
                 <tr><td class="align-right"><strong>Total</strong></td><td class="total">$ 0.00</td></tr>
             </table>
         </div>
-        <div class="functions"></div>
+        <div class="functions">
+            <table class="table">
+                <tr class='align-center'>
+                    <td><a href='javascript:Cancelar()' class='button danger'>Cancelar</a></td>
+                    <td><a href='#' class='button success'>Finalizar</a></td>
+                </tr>
+            </table>
+        </div>
     </div>
 </div>
 <script>
@@ -83,6 +90,14 @@
         });
         $(".info .cant").html(cant);
         $(".info .total").html("$ " + total.toFixed(2));
+    }
+    function Cancelar() {
+        $.get("/Venta/clear", function () {
+            $.get("/Venta/detalle", function (detail) {
+                $(".detalle .lista").html(detail);
+                CalcularTotal();
+            });
+        });
     }
 </script>
 <style>

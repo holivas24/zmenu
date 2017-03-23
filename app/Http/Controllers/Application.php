@@ -2,22 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
+use Auth,
+    View;
 use App\Usuarios,
     App\Categorias;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Input;
 
-class App extends Controller {
+class Application extends Controller {
 
     public function __construct() {
+        View::share('public', app()->env != 'local' ? 'public/' : '');
         $exceptions = ['except' => ['index', 'login', 'checkuser']];
         $this->middleware('session', $exceptions);
     }
 
     public function index() {
         if (Auth::user()) {
-            return redirect('/home');
+            return redirect('/inicio');
         } else {
             return redirect('/login');
         }
@@ -25,7 +27,7 @@ class App extends Controller {
 
     public function login() {
         if (Auth::user()) {
-            return redirect('/home');
+            return redirect('/inicio');
         } else {
             return view('/App/login');
         }
@@ -40,7 +42,7 @@ class App extends Controller {
         } else {
             Auth::attempt(['usuario' => $u, 'password' => $p]);
         }
-        return redirect()->intended('/home');
+        return redirect()->intended('/inicio');
     }
 
     public function logout() {
