@@ -78,7 +78,7 @@
                 <div class="row" style="height: 100%">
                     <div class="cell size-x200 bg-grayDark" id="cell-sidebar" style="height: 100%; overflow-y: auto; overflow-x: hidden">
                         <ul class="sidebar bg-grayDark">
-                            <li class="{{ Session::get('selected') == '0' ? 'active' : ''}}">
+                            <li class="{{Session::get('selected') == '0' ? 'active' : ''}}">
                                 <a href="/Admin" class="bg-hover-dark fg-hover-white">
                                     <span class="mif-apps icon"></span>
                                     <span class="title">Ver Todo</span>
@@ -88,35 +88,35 @@
                                 <a href="/Admin/usuarios" class="bg-hover-dark fg-hover-white">
                                     <span class="mif-users icon"></span>
                                     <span class="title">Usuarios</span>
-                                    <span class="counter">{{ Session::get('count_usu')}}</span>
+                                    <span class="counter">{{Session::get('count_usu')}}</span>
                                 </a>
                             </li>
                             <li class="{{ Session::get('selected') == 'ven' ? 'active' : ''}}">
                                 <a href="/Admin/ventas" class="bg-hover-dark fg-hover-white">
                                     <span class="mif-dollars icon"></span>
                                     <span class="title">Ventas</span>
-                                    <span class="counter">{{ Session::get('count_ven')}}</span>
+                                    <span class="counter">{{Session::get('count_ven')}}</span>
                                 </a>
                             </li>
                             <li class="{{ Session::get('selected') == 'cat' ? 'active' : ''}}">
                                 <a href="/Admin/categorias" class="bg-hover-dark fg-hover-white">
                                     <span class="mif-tag icon"></span>
                                     <span class="title">Categorías</span>
-                                    <span class="counter">{{ Session::get('count_cat')}}</span>
+                                    <span class="counter">{{Session::get('count_cat')}}</span>
                                 </a>
                             </li>
                             <li class="{{ Session::get('selected') == 'pro' ? 'active' : ''}}">
                                 <a href="/Admin/productos" class="bg-hover-dark fg-hover-white">
                                     <span class="mif-shop icon"></span>
                                     <span class="title">Productos</span>
-                                    <span class="counter">{{ Session::get('count_pro')}}</span>
+                                    <span class="counter">{{Session::get('count_pro')}}</span>
                                 </a>
                             </li>
                             <li class="{{ Session::get('selected') == 'reg' ? 'active' : ''}}">
                                 <a href="/Admin/registros" class="bg-hover-dark fg-hover-white">
                                     <span class="mif-history icon"></span>
                                     <span class="title">Registros</span>
-                                    <span class="counter">{{ Session::get('count_reg')}}</span>
+                                    <span class="counter">{{Session::get('count_reg')}}</span>
                                 </a>
                             </li>
                         </ul>
