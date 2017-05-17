@@ -55,3 +55,8 @@ Route::group(['prefix' => 'Admin'], function () {
     Route::get('producto/{id}', 'Admin@producto');
     Route::get('registro', 'Admin@registro');
 });
+
+Route::group(['prefix' => 'Mobile', 'middleware' => ['cors']], function () {
+    Route::get('categorias', 'Mobile@categorias');
+    Route::get('productos', 'Mobile@productos');
+});
