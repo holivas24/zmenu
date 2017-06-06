@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use View,
+    Auth,
     Session;
 use App\Usuarios,
     App\Categorias,
@@ -49,7 +50,8 @@ class Admin extends Controller {
     public function productos() {
         Session::put('selected', 'pro');
         $data = Productos::all();
-        return view('Admin/productos', ['data' => $data]);
+        $cat = Categorias::all();
+        return view('Admin/productos', ['data' => $data, 'cat' => $cat]);
     }
 
     public function registros() {
@@ -80,8 +82,9 @@ class Admin extends Controller {
 
     public function producto($id) {
         Session::put('selected', 'pro');
+        $cat = Categorias::all();
         $data = Productos::findOrFail($id);
-        return view('Admin/producto', ['p' => $data]);
+        return view('Admin/producto', ['p' => $data, 'cat' => $cat]);
     }
 
     public function registro() {
@@ -94,6 +97,41 @@ class Admin extends Controller {
             $registros = Registros::where('tipo', '=', $tipo)->orderBy('created_at', 'desc')->take($cant)->get();
         }
         return view('Admin/registro')->with('registros', $registros);
+    }
+
+    //Modificaciones
+    public function modUsuario() {
+
+    }
+
+    public function modCategoria($id) {
+        $c = Categorias::find($id);
+        if ($c == null) {
+            $c = new Categorias();
+        }
+        $c->fill(Input::all());
+        if (Input::file('photo')) {
+            $c->imagen = Input::file('photo')->getClientOriginalExtension();
+            Input::file('photo')->move(base_path() . '/public/upload/categorias/', $c->imagen);
+        }
+        $c->save();
+        Auth::user()->Registro($id == 0 ? 'Alta' : 'Cambio', 'CAT-' . $c->id, $c);
+        return redirect('/Admin/categoria/' . $c->id);
+    }
+
+    public function modProducto($id) {
+        $p = Productos::find($id);
+        if ($p == null) {
+            $p = new Productos(['cantidad' => 0]);
+        }
+        $p->fill(Input::all());
+        if (Input::file('photo')) {
+            $p->imagen = Input::file('photo')->getClientOriginalExtension();
+            Input::file('photo')->move(base_path() . '/public/upload/productos/', $p->imagen);
+        }
+        $p->save();
+        Auth::user()->Registro($id == 0 ? 'Alta' : 'Cambio', 'PRO-' . $p->id, $p);
+        return redirect('/Admin/producto/' . $p->id);
     }
 
 }

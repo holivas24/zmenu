@@ -57,4 +57,10 @@ class Venta extends Controller {
         return view('Venta/inventario', ['prod' => $prod]);
     }
 
+    public function mInventario() {
+        $p = Productos::findOrFail(Input::get('id'));
+        $p->cantidad = Input::get('cantidad');
+        $p->save();
+    }
+
 }

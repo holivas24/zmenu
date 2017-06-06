@@ -17,8 +17,8 @@
         <script src="{{ asset('js/select2/select2.js') }}"></script>
         <style>
             body {
-                background-image: url("{{asset('img/background2.png')}}");
-                background-size: 300px 300px;
+                background-image: url("{{asset('img/background.jpg')}}");
+                background-size: 200px 200px;
                 background-repeat: repeat;
             }
             .login-form {
@@ -41,14 +41,14 @@
                 bottom: 10px;
                 right: 10px;
                 z-index: 1;
-                opacity: 0.8;
-                filter: alpha(opacity=80);
+                opacity: 0.9;
+                filter: alpha(opacity=90);
             }
             .background-text{
                 position: fixed;
                 bottom: 0;
                 left: 10px;
-                color: #898989;
+                color: #EFEFEF;
                 z-index: 1;
             }
         </style>

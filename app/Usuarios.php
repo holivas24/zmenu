@@ -31,4 +31,9 @@ class Usuarios extends Authenticatable {
         return $this->deleted_at->formatLocalized('%d %B %Y %I:%M %p');
     }
 
+    public function Registro($tipo, $desc, $dump) {
+        $r = new Registros(['tipo' => $tipo, 'descripcion' => $desc, 'dump' => $dump, 'usuario_id' => $this->id]);
+        $r->save();
+    }
+
 }

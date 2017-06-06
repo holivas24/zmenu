@@ -17,6 +17,7 @@ class Productos extends Migration {
             $table->string('nombre');
             $table->double('precio');
             $table->integer('cantidad');
+            $table->string('imagen');
             $table->integer('categoria_id')->unsigned();
             $table->foreign('categoria_id')->references('id')->on('categorias');
             $table->softDeletes();

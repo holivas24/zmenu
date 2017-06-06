@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -9,7 +10,7 @@ class Productos extends Model {
 
     use SoftDeletes;
 
-    protected $fillable = ['nombre', 'precio', 'cantidad', 'categoria_id'];
+    protected $fillable = ['nombre', 'precio', 'cantidad', 'imagen', 'categoria_id'];
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
     public function getFolioAttribute() {
@@ -38,6 +39,10 @@ class Productos extends Model {
 
     public function getPrecioMonedaAttribute() {
         return "$ " . number_format($this->precio, 2, '.', ',');
+    }
+
+    public function getImagenAttribute() {
+        return (App::environment('local') ? '' : '/public') . '/upload/productos/' . $this->id . '.' . $this->attributes['imagen'];
     }
 
 }

@@ -17,6 +17,10 @@ setlocale(LC_TIME, 'es_CO.utf8');
 setlocale(LC_MONETARY, 'es_MX');
 Carbon::setLocale('es');
 
+if (App::environment('local')) {
+    Auth::loginUsingId(1);
+}
+
 Route::get('/', function () {
     return redirect('/inicio');
 });
@@ -36,6 +40,7 @@ Route::group(['prefix' => 'Venta'], function () {
     Route::get('detalle', 'Venta@detalle');
     Route::get('clear', 'Venta@clear');
     Route::get('inventario', 'Venta@inventario');
+    Route::get('mInventario', 'Venta@mInventario');
 });
 
 //Admin
@@ -54,6 +59,11 @@ Route::group(['prefix' => 'Admin'], function () {
     Route::get('categoria/{id}', 'Admin@categoria');
     Route::get('producto/{id}', 'Admin@producto');
     Route::get('registro', 'Admin@registro');
+});
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::post('producto/{id}', 'Admin@modProducto');
+    Route::post('categoria/{id}', 'Admin@modCategoria');
 });
 
 Route::group(['prefix' => 'Mobile', 'middleware' => ['cors']], function () {

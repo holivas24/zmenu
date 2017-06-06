@@ -15,6 +15,7 @@ class Registros extends Migration {
         Schema::create('registros', function (Blueprint $table) {
             $table->increments('id');
             $table->string('descripcion');
+            $table->text('dump');
             $table->enum('tipo', ['Alta', 'Baja', 'Cambio']);
             $table->integer('usuario_id')->unsigned();
             $table->foreign('usuario_id')->references('id')->on('usuarios');

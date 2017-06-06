@@ -15,6 +15,10 @@
         <td>{{$r->usuario->usuario}}</td>
         <td>{{$r->tipo}}</td>
         <td>{{$r->descripcion}}</td>
+        <td>
+            <div style="display: none;" id="dump_{{$r->id}}">{{$r->dumpTxt}}</div>
+            <a href='javascript:alert($("#dump_{{$r->id}}").html())' class="button warning">Detalle</a>
+        </td>
     </tr>
     @endforeach
 </table>
