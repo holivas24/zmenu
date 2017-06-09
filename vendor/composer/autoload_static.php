@@ -670,6 +670,8 @@ class ComposerStaticInit95351c9e3151e8df0cac8282b9d74ef5
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
         'Usuarios' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_Usuarios.php',
+        'Ventas' => __DIR__ . '/../..' . '/database/migrations/2017_06_06_213056_Ventas.php',
+        'VentasProductos' => __DIR__ . '/../..' . '/database/migrations/2017_06_06_213323_Ventas_Productos.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

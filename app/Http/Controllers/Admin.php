@@ -8,18 +8,20 @@ use View,
 use App\Usuarios,
     App\Categorias,
     App\Productos,
-    App\Registros;
+    App\Registros,
+    App\Ventas;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Routing\Controller;
 
 class Admin extends Controller {
 
     public function __construct() {
-        View::share('public', app()->env != 'local' ? 'public/' : '');
+        View::share('public', Application::getPublic());
         Session::put('count_usu', Usuarios::count());
         Session::put('count_cat', Categorias::count());
         Session::put('count_pro', Productos::count());
         Session::put('count_reg', Registros::count());
+        Session::put('count_ven', Ventas::count());
         $this->middleware('session');
     }
 
@@ -37,7 +39,7 @@ class Admin extends Controller {
 
     public function ventas() {
         Session::put('selected', 'ven');
-        $data = Usuarios::all();
+        $data = Ventas::all();
         return view('Admin/ventas', ['data' => $data]);
     }
 

@@ -2,7 +2,7 @@
 
 namespace App;
 
-use App;
+use App\Http\Controllers\Application;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -34,7 +34,7 @@ class Categorias extends Model {
     }
 
     public function getImagenAttribute() {
-        return (App::environment('local') ? '' : '/public') . '/upload/categorias/' . $this->id . '.' . $this->attributes['imagen'];
+        return $this->attributes['imagen'] != "" ? "/" . (Application::getPublic() . 'upload/categorias/' . $this->id . '.' . $this->attributes['imagen']) : "";
     }
 
 }

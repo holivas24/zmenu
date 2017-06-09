@@ -3,15 +3,18 @@
 namespace App\Http\Controllers;
 
 use Session,
-    View;
-use App\Productos;
+    View,
+    Auth;
+use App\Productos,
+    App\Ventas,
+    App\VentasProductos;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Input;
 
 class Venta extends Controller {
 
     public function __construct() {
-        View::share('public', app()->env != 'local' ? 'public/' : '');
+        View::share('public', Application::getPublic());
     }
 
     public function productos() {
@@ -61,6 +64,20 @@ class Venta extends Controller {
         $p = Productos::findOrFail(Input::get('id'));
         $p->cantidad = Input::get('cantidad');
         $p->save();
+    }
+
+    public function guardar() {
+        $v = new Ventas(['usuario_id' => Auth::id(), 'total' => 0]);
+        $v->save();
+        foreach (Session::get('productos') as $p) {
+            $p = Productos::findOrFail($p['id']);
+            $vp = new VentasProductos(['producto_id' => $p['id'], 'venta_id' => $v->id, 'cantidad' => $p['cantidad'], 'precio' => $p['precio'], 'total' => ($p['cantidad'] * $p['precio'])]);
+            $vp->save();
+            $v->total += $vp->total;
+        }
+        $v->save();
+        Session::put('productos', []);
+        return redirect('/inicio?id=' . $v->id);
     }
 
 }

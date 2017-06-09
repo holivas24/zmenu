@@ -27,11 +27,11 @@ Route::get('/', function () {
 
 //App
 Route::get('/', 'Application@index');
+Route::get('/Reporte', 'Reporte@index');
 Route::get('/login', 'Application@login');
 Route::post('/login', 'Application@checkuser');
 Route::get('/logout', 'Application@logout');
 Route::get('/inicio', 'Application@home');
-
 
 //Ventas
 Route::group(['prefix' => 'Venta'], function () {
@@ -41,6 +41,17 @@ Route::group(['prefix' => 'Venta'], function () {
     Route::get('clear', 'Venta@clear');
     Route::get('inventario', 'Venta@inventario');
     Route::get('mInventario', 'Venta@mInventario');
+    Route::get('guardar', 'Venta@guardar');
+});
+
+//Reporte
+Route::group(['prefix' => 'Reporte'], function () {
+    Route::get('index', 'Reporte@index');
+    Route::get('corte', 'Reporte@corte');
+    Route::post('corte', 'Reporte@postCorte');
+    //Estadísticas
+    Route::get('estVentas', 'Reporte@estVentas');
+    Route::get('estCategoria', 'Reporte@estCategoria');
 });
 
 //Admin

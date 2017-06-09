@@ -44,7 +44,7 @@
             <table class="table">
                 <tr class='align-center'>
                     <td><a href='javascript:Cancelar()' class='button danger'>Cancelar</a></td>
-                    <td><a href='#' class='button success'>Finalizar</a></td>
+                    <td><a href='/Venta/guardar' class='button success'>Finalizar</a></td>
                 </tr>
             </table>
         </div>

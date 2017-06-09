@@ -2,7 +2,7 @@
 
 namespace App;
 
-use App;
+use App\Http\Controllers\Application;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -42,7 +42,7 @@ class Productos extends Model {
     }
 
     public function getImagenAttribute() {
-        return (App::environment('local') ? '' : '/public') . '/upload/productos/' . $this->id . '.' . $this->attributes['imagen'];
+        return $this->attributes['imagen'] != "" ? "/" . (Application::getPublic() . 'upload/productos/' . $this->id . '.' . $this->attributes['imagen']) : "";
     }
 
 }

@@ -404,4 +404,6 @@ return array(
     'SebastianBergmann\\Version' => $vendorDir . '/sebastian/version/src/Version.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
     'Usuarios' => $baseDir . '/database/migrations/2014_10_12_000000_Usuarios.php',
+    'Ventas' => $baseDir . '/database/migrations/2017_06_06_213056_Ventas.php',
+    'VentasProductos' => $baseDir . '/database/migrations/2017_06_06_213323_Ventas_Productos.php',
 );

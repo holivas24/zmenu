@@ -12,9 +12,14 @@ use Illuminate\Support\Facades\Input;
 class Application extends Controller {
 
     public function __construct() {
-        View::share('public', app()->env != 'local' ? 'public/' : '');
+        View::share('public', Application::getPublic());
         $exceptions = ['except' => ['index', 'login', 'checkuser']];
         $this->middleware('session', $exceptions);
+    }
+
+    public static function getPublic() {
+        return '';
+        //return app()->env != 'local' ? 'public/' : '';
     }
 
     public function index() {

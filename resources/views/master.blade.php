@@ -23,6 +23,7 @@
         <script src="{{ asset($public.'js/jquery/highcharts.js') }}"></script>
         <script src="{{ asset($public.'js/jquery/highcharts-theme.js') }}"></script>
         <script src="{{ asset($public.'js/jquery/highcharts-lang.js') }}"></script>
+        <script src="{{ asset($public.'js/charts.js') }}"></script>
         <style>
             html, body {
                 height: 100%;
@@ -46,6 +47,7 @@
             <span class="app-bar-divider"></span>
             <ul class="app-bar-menu">
                 <li><a href="/Venta/inventario"><span class="mif-shop"></span> Inventario</a></li>
+                <li><a href="/Reporte"><span class="mif-coins"></span> Reportes</a></li>
                 <li><a href="/Admin/panel"><span class="mif-cogs"></span> Administrador</a></li>
             </ul>
             <ul class="app-bar-menu place-right" data-flexdirection="reverse">

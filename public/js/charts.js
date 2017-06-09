@@ -6,24 +6,31 @@ $(function () {
             shortMonths: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
         },
         credits: {
-            text: "Wemaz",
+            text: "zMenu",
             href: "#"
         }
     });
 });
-function chart_ts(name, title, url_data, yTitle) {
+function chart_ts(name, title, sub, url_data, yTitle) {
     $(function () {
         $.getJSON(url_data, function (data) {
             var big_data = [];
             $.each(data, function (key, val) {
                 big_data.push([new Date(val[0]).getTime(), val[1]]);
             });
+            var total = 0;
+            $.each(big_data, function (k, v) {
+                total += v[1];
+            });
             $(name).highcharts({
                 chart: {
                     zoomType: 'x'
                 },
                 title: {
-                    text: title
+                    text: title + " (" + total + ")"
+                },
+                subtitle: {
+                    text: sub
                 },
                 xAxis: {
                     type: 'datetime'
